@@ -1,0 +1,47 @@
+:host {
+  display: block;
+  padding: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+::ng-deep {
+    #pn_id_2,
+    .snippet-view-top {
+        margin-top: 30px;
+    }
+    .snippet-view-top .p-element div.p-component {
+        min-height: 520px;
+    }
+
+    input.p-inputtext {
+        width: 25%;
+    }
+
+    .line-clamp-2 {
+        margin: 10px 0;
+    }
+
+    p-card:hover {
+        cursor: pointer;
+    }
+
+
+    @media only screen and (max-width: 767px) {
+        input.p-inputtext {
+            width: 100%;
+        }
+    }
+}
