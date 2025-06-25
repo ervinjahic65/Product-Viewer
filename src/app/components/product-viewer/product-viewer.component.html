@@ -15,7 +15,7 @@
           <td>{{ product.title }}</td>
           <td>${{ product.price }}</td>
           <td>{{ product.rating }}</td>
-          <td>{{ product.category }}</td>
+          <td>{{ product.category | uppercase }}</td>
         </tr>
       </ng-template>
     </p-table>
@@ -23,8 +23,8 @@
 
   <p-tabPanel header="Snippet View">
     <input type="text" pInputText [(ngModel)]="filterText" (input)="onFilterChange()" placeholder="Search..." class="mb-3 w-full" />
-    <div class="grid gap-4">
-      <p-card *ngFor="let product of filteredProducts" header="{{ product.title }}" [subheader]="product.category">
+    <div class="grid gap-4 snippet-view-top">
+      <p-card *ngFor="let product of filteredProducts" header="{{ product.title }}" [subheader]="product.category | uppercase">
         <ng-template pTemplate="header">
           <img [src]="product.thumbnail" alt="{{ product.title }}" width="100" />
         </ng-template>

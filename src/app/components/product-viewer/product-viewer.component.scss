@@ -15,3 +15,23 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+::ng-deep {
+    #pn_id_2,
+    .snippet-view-top {
+        margin-top: 30px;
+    }
+    .snippet-view-top .p-element div.p-component {
+        min-height: 520px;
+    }
+
+    input.p-inputtext {
+        width: 25%;
+    }
+
+    @media only screen and (max-width: 767px) {
+        input.p-inputtext {
+            width: unset;
+        }
+    }
+}
