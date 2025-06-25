@@ -28,7 +28,7 @@
         <ng-template pTemplate="header">
           <img [src]="product.thumbnail" alt="{{ product.title }}" width="100" />
         </ng-template>
-        <div class="line-clamp-2">{{ product.description }}</div>
+        <div class="line-clamp-2" [title]="product.description">{{ product.description }}</div>
         <div class="mt-2 font-semibold">
           ${{ product.price }} - Rating: {{ product.rating }}
         </div>
