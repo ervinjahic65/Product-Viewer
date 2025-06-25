@@ -34,6 +34,11 @@
         margin: 10px 0;
     }
 
+    p-card:hover {
+        cursor: pointer;
+    }
+
+
     @media only screen and (max-width: 767px) {
         input.p-inputtext {
             width: 100%;

@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from '../../services/product.service';
@@ -13,6 +20,13 @@ import { CardModule } from 'primeng/card';
 @Component({
   selector: 'app-product-viewer',
   standalone: true,
+  animations: [
+    trigger('zoomCard', [
+      state('default', style({ transform: 'scale(1)' })),
+      state('zoomed', style({ transform: 'scale(1.05)' })),
+      transition('default <=> zoomed', animate('200ms ease-in-out'))
+    ])
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -28,6 +42,7 @@ export class ProductViewerComponent implements OnInit {
   products: Product[] = [];
   filteredProducts: Product[] = [];
   filterText = '';
+  cardStates: { [id: number]: 'default' | 'zoomed' } = {};
 
   constructor(private productService: ProductService) {}
 

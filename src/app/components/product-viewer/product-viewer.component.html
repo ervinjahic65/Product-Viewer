@@ -24,15 +24,26 @@
   <p-tabPanel header="Snippet View">
     <input type="text" pInputText [(ngModel)]="filterText" (input)="onFilterChange()" placeholder="Search..." class="mb-3 w-full" />
     <div class="grid gap-4 snippet-view-top">
-      <p-card *ngFor="let product of filteredProducts" header="{{ product.title }}" [subheader]="product.category | uppercase">
+      <p-card
+        *ngFor="let product of filteredProducts"
+        header="{{ product.title }}"
+        [subheader]="product.category | uppercase"
+        [@zoomCard]="cardStates[product.id] || 'default'"
+        (mouseenter)="cardStates[product.id] = 'zoomed'"
+        (mouseleave)="cardStates[product.id] = 'default'"
+        this.style="transition: transform 0.2s ease-in-out;"
+        >
         <ng-template pTemplate="header">
-          <img [src]="product.thumbnail" alt="{{ product.title }}" width="100" />
+            <img [src]="product.thumbnail" alt="{{ product.title }}" width="100" />
         </ng-template>
-        <div class="line-clamp-2" [title]="product.description">{{ product.description }}</div>
+        <div class="line-clamp-2" [title]="product.description">
+            {{ product.description }}
+        </div>
         <div class="mt-2 font-semibold">
-          ${{ product.price }} - Rating: {{ product.rating }}
+            ${{ product.price }} - Rating: {{ product.rating }}
         </div>
       </p-card>
+
     </div>
   </p-tabPanel>
 </p-tabView>
