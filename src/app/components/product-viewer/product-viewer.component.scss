@@ -29,9 +29,13 @@
         width: 25%;
     }
 
+    .line-clamp-2 {
+        margin: 10px 0;
+    }
+
     @media only screen and (max-width: 767px) {
         input.p-inputtext {
-            width: unset;
+            width: 100%;
         }
     }
 }
