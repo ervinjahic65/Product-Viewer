@@ -1,18 +1,32 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { Product } from '../models/product/product.module';
+import { GraphQLService } from './graphql.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private graphqlService: GraphQLService) { }
 
   getProducts(): Observable<Product[]> {
-    return this.http.get<any>('assets/products.json').pipe(
-      map(response => response.products)
+    const query = `
+      query {
+        products {
+          id
+          title
+          description
+          category
+          price
+          rating
+          thumbnail
+        }
+      }
+    `;
+
+    return this.graphqlService.query(query).pipe(
+      map(result => result.data.products)
     );
   }
 }
